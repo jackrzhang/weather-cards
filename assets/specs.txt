@@ -1,0 +1,13 @@
+Project: Weather Cards
+Date: 160604
+Author: jackrzhang
+
+PROBLEM DEFINITION:
+1) Provide current weather information based on user-input longitude and latitude
+    a) Present this information in the form of cards
+2) Allow users to save weather cards in the form of an image
+
+IMPLEMENTATION DETAILS:
+1) Backbone.js
+2) Pure.css for any grid work
+3) HTML5 Canvas to save Weather Card divs as images
