@@ -1,6 +1,6 @@
 var AppModel = Backbone.Model.extend({
   initialize: function() {
-    this.set('WeatherCollection', new WeatherCollection());
+    this.set('Weather', new Weather());
   }
 });
 
