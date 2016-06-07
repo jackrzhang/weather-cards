@@ -1,9 +1,9 @@
 var TitleView = Backbone.View.extend({
-  el: 'div.title',
 
   template: _.template('\
-    <h1>Weather Cards</h1>\
-  '),
+    <div>\
+      <h1 class="title">Weather Cards</h1>\
+    </div>'),
 
   initialize: function() {
     this.render();
