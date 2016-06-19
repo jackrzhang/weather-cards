@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.titleView = new TitleView();
+    this.inputView = new InputView();
     this.weatherView = new WeatherView({
       collection: this.collection
     });
@@ -13,6 +14,7 @@ var AppView = Backbone.View.extend({
   render: function() {
     this.$el.append([
       this.titleView.$el,
+      this.inputView.$el,
       this.weatherView.$el
     ]);
     return this;

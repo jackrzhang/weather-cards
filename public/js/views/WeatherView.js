@@ -1,12 +1,10 @@
 var WeatherView = Backbone.View.extend({
 
-  el: 'div.weather-list',
+  class: 'weather-list',
 
   initialize: function() {
     this.listenTo(this.collection, 'add', this.render);
     //this.collection.on('add', this.render, this);
-
-    this.render();
   },
 
   render: function() {
