@@ -3,7 +3,9 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.titleView = new TitleView();
-    this.inputView = new InputView();
+    this.inputView = new InputView({
+      collection: this.collection
+    });
     this.weatherView = new WeatherView({
       collection: this.collection
     });
