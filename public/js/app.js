@@ -1,3 +1,3 @@
 var app = new AppView({
-  collection: new AppModel()
+  collection: new Weather()
 });
