@@ -17,26 +17,39 @@ var InputView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
+
+    this.$latitudeInput = this.$el.find('input.latitude');
+    this.$longitudeInput = this.$el.find('input.longitude');
   },
 
   inputSubmit: function() {
-    var $latitudeInput = this.$el.find('input.latitude');
-    var $longitudeInput = this.$el.find('input.longitude');
-
     // Validate latitude -90.XXXXXX to 90.XXXXXX, longitude -180.XXXXXX to 180.XXXXXX
-    if (!$latitudeInput.val().trim().match(/^-?([0-8]?[0-9]|90)\.[0-9]{1,6}/)) {
-      $latitudeInput.attr({
-        placeholder: 'Invalid latitude.'
-      });
-      $latitudeInput.val('');
-    } else if (!$longitudeInput.val().trim().match(/-?((1?[0-7]?|[0-9]?)[0-9]|180)\.[0-9]{1,6}$/)) {
-      $longitudeInput.attr({
-        placeholder: 'Invalid longitude.'
-      });
-      $longitudeInput.val('');
+    if (!this.$latitudeInput.val().trim().match(/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/)) {
+      this.invalidLatitude();
+    } else if (!this.$longitudeInput.val().trim().match(/(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/)) {
+      this.invalidLongitude();
     } else {
-      console.log('yee');
+      this.collection.addWeatherCard(this.$latitudeInput.val(), this.$longitudeInput.val());
+      this.resetInput();
     }
+  },
+
+  invalidLatitude: function() {
+    this.$latitudeInput.attr({ placeholder: 'Invalid latitude.' });
+    this.$latitudeInput.val('');
+  },
+
+  invalidLongitude: function() {
+    this.$longitudeInput.attr({ placeholder: 'Invalid longitude.' });
+    this.$longitudeInput.val('');
+  },
+
+  resetInput: function() {
+    this.$latitudeInput.attr({ placeholder: 'Enter a latitude.' });
+    this.$latitudeInput.val('');
+
+    this.$longitudeInput.attr({ placeholder: 'Enter a longitude.' });
+    this.$longitudeInput.val('');
   },
 
   render: function() {
