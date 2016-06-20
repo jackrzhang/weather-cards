@@ -4,6 +4,7 @@ var WeatherCard = Backbone.Model.extend({
     longitude: '',
     degrees: '',
     unit: '°F',
+    icon: '',
     time: '',
     date: '',
     day: '',
