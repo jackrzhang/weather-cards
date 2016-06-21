@@ -11,12 +11,10 @@ var Weather = Backbone.Collection.extend({
       function(data) {
         console.log(data);
         this.add({
-          latitude: data.coord.lat,
-          longitude: data.coord.long,
-          degrees: data.main.temp.toFixed(2),
-          icon: data.main.description,
+          degrees: ((data.main.temp - 32) * 5 / 9).toFixed(2),
+          description: data.weather[0].description,
           time: timeInfo.getHours().toString() + ':' + timeInfo.getMinutes().toString(),
-          date: timeInfo.getMonth.toString() + '.' + timeInfo.getDate().toString(),
+          date: timeInfo.getMonth().toString() + '.' + timeInfo.getDate().toString(),
           day: timeInfo.getDay(),
           city: data.name
         })

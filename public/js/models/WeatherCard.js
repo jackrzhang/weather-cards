@@ -1,13 +1,13 @@
 var WeatherCard = Backbone.Model.extend({
   defaults: {
-    latitude: '',
-    longitude: '',
     degrees: '',
-    unit: '°F',
-    icon: '',
+    unit: '°C',
+    description: '',
     time: '',
     date: '',
     day: '',
     city: ''
-  }
+  },
+
+  initialize: function() {}
 });
