@@ -11,7 +11,7 @@ var Weather = Backbone.Collection.extend({
       function(data) {
         console.log(data);
         this.add({
-          degrees: ((data.main.temp - 32) * 5 / 9).toFixed(2),
+          degrees: (data.main.temp - 273.15).toFixed(2),
           description: data.weather[0].description,
           time: timeInfo.getHours().toString() + ':' + timeInfo.getMinutes().toString(),
           date: timeInfo.getMonth().toString() + '.' + timeInfo.getDate().toString(),
